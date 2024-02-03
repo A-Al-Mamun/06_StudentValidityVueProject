@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List Vue 3 Project | Created by A-Al-Mamun</title>
+
+    <!-- Css Stayle link -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Vue 3 CDN Link -->
+    <script src="http://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <h1>{{ heading }}</h1>
+
+        <form v-on:submit.prevent="addItem" class="getInput">
+            <input type="text" placeholder="Text Input..." v-model="inputText" class="input-item">
+            <input type="text" placeholder="Duration Time" v-model="inputTime" class="input-item">
+            <button type="submit" class="input-btn">ADD</button>
+        </form>
+
+        <div class="result">
+            <h3>{{ resultTitle }}</h3>
+            <ul class="list">
+                <li>List<span>Time</span></li>
+                <li v-for="item in storeList"
+                    @click="item.found =! item.found"
+                    v-show="! item.found"
+                >{{ item.text }} <span>{{ item.time }}</span></li>
+            </ul>
+            <ul class="checked">
+                <li v-for="item in storeList"
+                    @click="item.found =! item.found"
+                    v-show="item.found"
+                >{{ item.text }} <span>{{ item.time }}</span></li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
